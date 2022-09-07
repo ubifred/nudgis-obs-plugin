@@ -45,11 +45,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 find_package(Jansson REQUIRED)
 find_package(Libcurl REQUIRED)
-find_package(LibObs REQUIRED)
+find_package(libobs REQUIRED)
 find_package(LibObsFrontendApi REQUIRED)
 include(external/ObsPluginHelpers.cmake)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt6Core REQUIRED)
+find_package(Qt6Widgets REQUIRED)
 
 
 configure_file(
@@ -72,9 +72,9 @@ target_include_directories(test
 
 target_link_libraries(test
 	PRIVATE
-		libobs
-		Qt5::Core
-		Qt5::Widgets
+		OBS::libobs
+		Qt6::Core
+		Qt6::Widgets
 		${LIBOBSFRONTENDAPI_LIBRARIES}
 		${LIBCURL_LIBRARIES}
 		${JANSSON_LIBRARIES})
@@ -94,9 +94,9 @@ target_include_directories(${CMAKE_PROJECT_NAME}
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
 	PRIVATE
-		libobs
-		Qt5::Core
-		Qt5::Widgets
+		OBS::libobs
+		Qt6::Core
+		Qt6::Widgets
 		${LIBOBSFRONTENDAPI_LIBRARIES}
 		${LIBCURL_LIBRARIES}
 		${JANSSON_LIBRARIES})
