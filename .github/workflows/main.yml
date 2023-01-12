@@ -13,6 +13,7 @@ on:
       - '**.md'
     branches:
       - '*'
+  workflow_dispatch:
 
 env:
   PLUGIN_NAME: 'nudgis-obs-plugin'
