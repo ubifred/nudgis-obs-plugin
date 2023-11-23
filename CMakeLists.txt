@@ -15,6 +15,7 @@ add_library(${CMAKE_PROJECT_NAME} MODULE)
 
 # Disable linux portable mode otherwise plugin get installed in folder not looked upon by OBS (obs-plugins/{32,64}bits)
 set(LINUX_PORTABLE OFF)
+set(CPACK_DEBIAN_PACKAGE_VERSION "${_version}+OBS-30.0.0")
 
 # Import dependencies
 find_package(libobs REQUIRED)
