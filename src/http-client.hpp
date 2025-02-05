@@ -9,12 +9,11 @@
 
 typedef long http_code_t;
 
-#define HTTP_CODE_UNDEF ((http_code_t)-1)
+#define HTTP_CODE_UNDEF ((http_code_t) - 1)
 
 class HttpClientFormField {
 public:
-	HttpClientFormField(std::string name, std::string filename,
-			    const char *data, size_t datasize);
+	HttpClientFormField(std::string name, std::string filename, const char *data, size_t datasize);
 	std::string name = {};
 	std::string filename = {};
 	const char *data = NULL;

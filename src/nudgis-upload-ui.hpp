@@ -24,8 +24,7 @@ class NudgisUploadUi : public QDialog {
 	Q_OBJECT
 
 public:
-	NudgisUploadUi(QWidget *parent = Q_NULLPTR,
-		       const char *fileName = Q_NULLPTR);
+	NudgisUploadUi(QWidget *parent = Q_NULLPTR, const char *fileName = Q_NULLPTR);
 	~NudgisUploadUi();
 
 protected:
@@ -64,7 +63,7 @@ private slots:
 	void on_pushButton_Cancel_clicked();
 	void on_pushButton_Done_clicked();
 	virtual void on_pushButton_Error_Done_clicked();
-	virtual void on_pushButton_TestParamsDone_clicked(){};
+	virtual void on_pushButton_TestParamsDone_clicked() {};
 
 	void on_endUpload();
 	void on_progressUpload(int percent);
@@ -74,9 +73,7 @@ class NudgisTestParamsUi : public NudgisUploadUi {
 	Q_OBJECT
 
 public:
-	NudgisTestParamsUi(QWidget *parent,
-			   const NudgisTestParamsData *test_params_data,
-			   const char *windowTitle);
+	NudgisTestParamsUi(QWidget *parent, const NudgisTestParamsData *test_params_data, const char *windowTitle);
 
 private slots:
 	void on_pushButton_Error_Done_clicked() Q_DECL_OVERRIDE;
