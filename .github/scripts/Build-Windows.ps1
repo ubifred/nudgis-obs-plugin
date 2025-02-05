@@ -61,7 +61,7 @@ function Build {
         '--preset', "windows-${Target}"
         '--config', $Configuration
         '--parallel'
-        '--', '/consoleLoggerParameters:Summary', '/noLogo'
+        '--', '/consoleLoggerParameters:Summary', '/noLogo', '/verbosity:diag'
     )
 
     $CmakeInstallArgs += @(
