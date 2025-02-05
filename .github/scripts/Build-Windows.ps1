@@ -51,11 +51,12 @@ function Build {
     $CmakeBuildArgs = @('--build')
     $CmakeInstallArgs = @()
 
-    if ( $DebugPreference -eq 'Continue' ) {
-        $CmakeArgs += ('--debug-output')
-        $CmakeBuildArgs += ('--verbose')
-        $CmakeInstallArgs += ('--verbose')
-    }
+    # if ( $DebugPreference -eq 'Continue' ) {
+    $CmakeArgs += ('--debug-output')
+    $CmakeArgs += ('--debug-output')
+    $CmakeBuildArgs += ('--verbose')
+    $CmakeInstallArgs += ('--verbose')
+    # }
 
     $CmakeBuildArgs += @(
         '--preset', "windows-${Target}"
