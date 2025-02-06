@@ -5,6 +5,8 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/common/bootstrap.cmake" NO_POLICY_SCO
 project(${_name} VERSION ${_version})
 
 # Custom prameters ------------------------------------------------------------
+option(ENABLE_FRONTEND_API "Use obs-frontend-api for UI functionality" ON)
+option(ENABLE_QT "Use Qt functionality" ON)
 # Disable linux portable mode otherwise plugin get installed in folder not looked upon by OBS (obs-plugins/{32,64}bits)
 set(LINUX_PORTABLE OFF)
 # set a custom package version for debian .deb
@@ -43,11 +45,6 @@ target_sources(
   ${CMAKE_PROJECT_NAME}
   PRIVATE
     src/nudgis-plugin.cpp
-    src/nudgis-service.cpp
-    src/nudgis-config.cpp
-    src/nudgis-upload-ui.cpp
-    src/http-client.cpp
-    src/obs/obs-utils.cpp
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src ${CMAKE_SOURCE_DIR}/src/obs)
@@ -57,19 +54,19 @@ set_target_properties_plugin(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${_nam
 
 # --- Tests ---
 
-add_executable(test)
-
-# same src as main project + test.cpp
-get_target_property(target_srcs ${CMAKE_PROJECT_NAME} SOURCES)
-target_sources(test PRIVATE ${target_srcs} src/test.cpp)
-
-# same lib as main project
-get_target_property(target_libs ${CMAKE_PROJECT_NAME} LINK_LIBRARIES)
-target_link_libraries(test PRIVATE ${target_libs})
-
-set_target_properties(
-  test
-  PROPERTIES AUTOMOC ON AUTOUIC ON AUTORCC ON
-)
-
-target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR}/src/obs ${CMAKE_SOURCE_DIR}/src)
+# add_executable(test)
+#
+# # same src as main project + test.cpp
+# get_target_property(target_srcs ${CMAKE_PROJECT_NAME} SOURCES)
+# target_sources(test PRIVATE ${target_srcs} src/test.cpp)
+#
+# # same lib as main project
+# get_target_property(target_libs ${CMAKE_PROJECT_NAME} LINK_LIBRARIES)
+# target_link_libraries(test PRIVATE ${target_libs})
+#
+# set_target_properties(
+#   test
+#   PROPERTIES AUTOMOC ON AUTOUIC ON AUTORCC ON
+# )
+#
+# target_include_directories(test PRIVATE ${CMAKE_SOURCE_DIR}/src/obs ${CMAKE_SOURCE_DIR}/src)

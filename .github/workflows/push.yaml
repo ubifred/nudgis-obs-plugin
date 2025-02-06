@@ -6,7 +6,7 @@ on:
       - master
       - main
       - 'release/**'
-      - '31.*'
+      - 'debug'
     tags:
       - '*'
 permissions:
@@ -14,7 +14,7 @@ permissions:
 jobs:
   check-format:
     name: Check Formatting 🔍
-    if: true #github.ref_name == 'master' || github.ref_name == 'main'
+    if: github.ref_name == 'master' || github.ref_name == 'main'
     uses: ./.github/workflows/check-format.yaml
     permissions:
       contents: read

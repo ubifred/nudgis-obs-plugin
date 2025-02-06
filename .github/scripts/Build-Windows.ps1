@@ -6,6 +6,7 @@ param(
     [string] $Configuration = 'RelWithDebInfo'
 )
 
+$DebugPreference = 'Continue'
 $ErrorActionPreference = 'Stop'
 
 if ( $DebugPreference -eq 'Continue' ) {
@@ -49,14 +50,14 @@ function Build {
 
     $CmakeArgs = @('--preset', "windows-ci-${Target}")
     $CmakeBuildArgs = @('--build')
-    $CmakeInstallArgs = @()
+    $CmakeInstallArgs = @('--install', "build_${Target}")
 
-    # if ( $DebugPreference -eq 'Continue' ) {
-    $CmakeArgs += ('--debug-output')
-    $CmakeArgs += ('--debug-output')
-    $CmakeBuildArgs += ('--verbose')
-    $CmakeInstallArgs += ('--verbose')
-    # }
+    if ( $DebugPreference -eq 'Continue' ) {
+        $CmakeArgs += ('--debug-output')
+        $CmakeBuildArgs += ('--verbose')
+        $CmakeInstallArgs += ('--verbose')
+    }
+
 
     $CmakeBuildArgs += @(
         '--preset', "windows-${Target}"
@@ -66,10 +67,14 @@ function Build {
     )
 
     $CmakeInstallArgs += @(
-        '--install', "build_${Target}"
         '--prefix', "${ProjectRoot}/release/${Configuration}"
         '--config', $Configuration
     )
+
+    $env:CMAKE_TLS_VERIFY = 0
+
+    Log-Status "cmake version"
+    Invoke-External cmake --version
 
     Log-Group "Configuring ${ProductName}..."
     Invoke-External cmake @CmakeArgs
