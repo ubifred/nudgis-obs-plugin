@@ -105,8 +105,8 @@ void NudgisConfig::save(const char *filename)
 			    this->publish_recording_automatically->name.c_str());
 	obs_data_set_int(data, "upload_chunk_size", this->upload_chunk_size);
 
-	if (!obs_data_save_json_safe(data, path, "tmp", "bak"))
-		obs_log(LOG_WARNING, "%s", "Failed to save nudgis_config");
+	// if (!obs_data_save_json_safe(data, path, "tmp", "bak"))
+	// 	obs_log(LOG_WARNING, "%s", "Failed to save nudgis_config");
 
 	obs_data_release(data);
 }
