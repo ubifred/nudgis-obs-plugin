@@ -12,9 +12,9 @@ The plugin is available for the following platforms:
 - [Windows](#Windows) 10/11 64 bits
 - [macOS](#macOS) (arm64 and x86)
 - [Linux](#Linux):
-  - [Ubuntu](#Ubuntu) >= 22.04 (Jammy Jellyfish) with latest OBS Studio via the official [PPA](https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio)
+  - [Ubuntu](#Ubuntu) >= 24.04 (Noble Numbat) with latest OBS Studio via the official [PPA](https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio)
   - [Arch Linux](#Archlinux)
-  - Add distribution with the Flatpack installation [Flatpack Installation](#Flatpack))
+  - All distributions with the Flatpack installation [Flatpack Installation](#Flatpack))
 
 See the release notes for the minimal version of each OS
 
@@ -32,13 +32,10 @@ An [AUR package](https://aur.archlinux.org/packages/nudgis-obs-plugin) is availa
 
 ### Windows
 
-Check out [our tutorial](https://help.ubicast.tv/permalink/v1263f5564abdmnmj38p/iframe/).
+We follow the OBS plugin template that favor zip archive for portable installs
+and to mitigates code signing warnings or false positive anti virus.
 
-<a target="_blank" title="Installing the OBS Nudgis plugin on Windows" href="https://help.ubicast.tv/permalink/v1263f5564abdmnmj38p/iframe/"><img src="https://help.ubicast.tv/public/videos/v1263f55698ddjr0tg91rzxa77tacn/thumb_link.png" alt="Installing the OBS Nudgis plugin on Windows"/></a>
-
-Double click the .exe and follow the instructions. A "Windows protected your PC" popup will appear; click "More info" and confirm to allow installation; follow the wizard, and confirm you want to install the plugin into the same folder as OBS (important).
-
-> :warning: Microsoft Defender may tag some versions of the installer as malware (it depends on the release and Windows Defender database). If this happens follow these [instructions](docs/windows_av_bypass.md) until the Microsoft Defender DB is updated.
+TODO
 
 ### macOS
 
@@ -78,8 +75,8 @@ After download follow these steps:
 For Ubuntu we only support OBS studio from the official OBS PPA as
 described on the [OBS website](https://obsproject.com/download#linux)
 
-Before installing OBS you have to check that the major version (i.e. `30` for
-obs-studio 30.0.0) match with the `nudgis-obs-plugin` available in the
+Before installing OBS you have to check that the major version (i.e. `31` for
+obs-studio 31.0.0) match with the `nudgis-obs-plugin` available in the
 [releases github page](https://github.com/UbiCastTeam/nudgis-obs-plugin/releases)
 
 See the [PPA page](https://launchpad.net/~obsproject/+archive/ubuntu/obs-studio/+packages)
@@ -118,7 +115,7 @@ Check Flatpack version of the OBS https://flathub.org/apps/com.obsproject.Studio
 * then copy the files to the right place
 
 	```
-	mkdir ~/.var/app/com.obsproject.Studio/config/obs-studio/plugins/nudgis-obs-plugin/{bin/64bit,data}
+	mkdir -p ~/.var/app/com.obsproject.Studio/config/obs-studio/plugins/nudgis-obs-plugin/{bin/64bit,data}
 	cp usr/lib/x86_64-linux-gnu/obs-plugins/nudgis-obs-plugin.so ~/.var/app/com.obsproject.Studio/config/obs-studio/plugins/nudgis-obs-plugin/bin/64bit
 	cp -r usr/share/obs/obs-plugins/nudgis-obs-plugin/locale ~/.var/app/com.obsproject.Studio/config/obs-studio/plugins/nudgis-obs-plugin/data
 	```
@@ -135,7 +132,7 @@ yay -S nudgis-obs-plugin
 
 ### Windows
 
-The plugin can be uninstalled like any other installed software in the "Add or remove programs" menu.
+TODO
 
 ### macOS
 
@@ -171,9 +168,9 @@ Below is the listing of Artifact names, containing the deployment binaries for e
 
 | Platform | Artifact Name                                        | Note                                                                                                                              |
 | -------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Linux    | nudgis-obs-plugin-1.0.0-linux-x86_64.deb             | Debian .deb package, may be used for other Linux platforms[1]                                                                     |
+| Linux    | nudgis-obs-plugin-1.0.0-linux-x86_64-linux-gnu.deb   | Debian .deb package, may be used for other Linux platforms[1]                                                                     |
 | MacOS    | nudgis-obs-plugin-1.0.0-macos-universal.pkg          | Universal MacOS package (intel x86 and ARM based)                                                                                 |
-| Windows  | nudgis-obs-plugin-1.0.0-windows-x64-Installer.exe    | Universal 64 bits windows package                                                                                                 |
+| Windows  | nudgis-obs-plugin-1.0.0-windows-x64.zip              | Windows 64 bits portable archive                                                                                                  |
 
 ### Setting up the development environment on Ubuntu 20.04
 
